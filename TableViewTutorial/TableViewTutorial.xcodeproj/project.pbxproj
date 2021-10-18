@@ -14,6 +14,8 @@
 		0C59ECDE271D10D50097EF7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C59ECDD271D10D50097EF7B /* Assets.xcassets */; };
 		0C59ECE1271D10D50097EF7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C59ECDF271D10D50097EF7B /* LaunchScreen.storyboard */; };
 		0C59ECE9271D23D40097EF7B /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C59ECE8271D23D40097EF7B /* ChecklistItem.swift */; };
+		0CB3052E271D3C8D0089032A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0CB3052D271D3C8D0089032A /* SnapKit */; };
+		0CB30530271D47B80089032A /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB3052F271D47B80089032A /* AddItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,7 @@
 		0C59ECE0271D10D50097EF7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C59ECE2271D10D50097EF7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C59ECE8271D23D40097EF7B /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
+		0CB3052F271D47B80089032A /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CB3052E271D3C8D0089032A /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +70,7 @@
 				0C59ECDF271D10D50097EF7B /* LaunchScreen.storyboard */,
 				0C59ECE2271D10D50097EF7B /* Info.plist */,
 				0C59ECE8271D23D40097EF7B /* ChecklistItem.swift */,
+				0CB3052F271D47B80089032A /* AddItemViewController.swift */,
 			);
 			path = TableViewTutorial;
 			sourceTree = "<group>";
@@ -86,6 +91,9 @@
 			dependencies = (
 			);
 			name = TableViewTutorial;
+			packageProductDependencies = (
+				0CB3052D271D3C8D0089032A /* SnapKit */,
+			);
 			productName = TableViewTutorial;
 			productReference = 0C59ECD1271D10D40097EF7B /* TableViewTutorial.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +122,9 @@
 				Base,
 			);
 			mainGroup = 0C59ECC8271D10D40097EF7B;
+			packageReferences = (
+				0CB3052C271D3C8D0089032A /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 0C59ECD2271D10D40097EF7B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -141,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CB30530271D47B80089032A /* AddItemViewController.swift in Sources */,
 				0C59ECD9271D10D40097EF7B /* ChecklistViewController.swift in Sources */,
 				0C59ECD5271D10D40097EF7B /* AppDelegate.swift in Sources */,
 				0C59ECD7271D10D40097EF7B /* SceneDelegate.swift in Sources */,
@@ -368,6 +380,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0CB3052C271D3C8D0089032A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0CB3052D271D3C8D0089032A /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CB3052C271D3C8D0089032A /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0C59ECC9271D10D40097EF7B /* Project object */;
 }
