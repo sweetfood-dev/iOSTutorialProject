@@ -11,6 +11,7 @@ import SnapKit
 class ChecklistViewController: UITableViewController {
     /// Checklist의 데이터 모델
     var items = [ChecklistItem]()
+    var checklist: Checklist!
     lazy var addButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(moveNextViewController(_:)))
         return button
@@ -21,28 +22,9 @@ class ChecklistViewController: UITableViewController {
         // NavigationViewController Title 설정
         setNavigationItem()
         
-        // Replace previous code with the following
-        let item1 = ChecklistItem()
-        item1.text = "Walk the dog"
-        items.append(item1)
+        // load items
+        loadChecklistItems()
         
-        let item2 = ChecklistItem()
-        item2.text = "Brush my teeth"
-        item2.checked = true
-        items.append(item2)
-        
-        let item3 = ChecklistItem()
-        item3.text = "Learn iOS development"
-        item3.checked = true
-        items.append(item3)
-        
-        let item4 = ChecklistItem()
-        item4.text = "Soccer practice"
-        items.append(item4)
-        
-        let item5 = ChecklistItem()
-        item5.text = "Eat ice cream"
-        items.append(item5)
     }
         
     func configureText(for cell: UITableViewCell, with item: ChecklistItem) {
@@ -51,18 +33,75 @@ class ChecklistViewController: UITableViewController {
     }
     
     func configureCheck(for cell: UITableViewCell, with item: ChecklistItem) {
-        cell.accessoryType = item.checked ? .checkmark : .none
+        let label = cell.viewWithTag(1001) as! UILabel
+        label.text = item.checked ? "√" : ""
+    }
+}
+
+// MARK: - Documents
+extension ChecklistViewController {
+    /// 샌드박스 Documents 폴더의 전체 경로를 반환
+    /// - Returns: Documents 폴더의 전체 경로
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(
+            for: .documentDirectory,
+               in: .userDomainMask)
+        return paths[0]
+    }
+    /// documentsDirectory()를 사용하여 체크리스트의 항목을 저장할 파일의 전체 경로를 구성, 파일명은 Checklists.plist
+    /// - Returns: 저장할 파일의 전체 경로
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Checklists.plist")
+    }
+    
+    /// items를 Documents에 저장하는 메소드
+    func saveChecklistItems() {
+        // 인코딩 가능한 PropertyListEncoder를 생성
+        let encoder = PropertyListEncoder()
+        // 에러 핸들링 시작
+        do {
+            // items를 인코딩하여 data에 할당, 인코딩할 수 없는 경우 에러를 던지기 때문에 try 키워드 사용
+            let data = try encoder.encode(items)
+            // 인코딩 된 data를 dataFilePath() 경로에 저장, 이 또한 저장할 수 없는 경우 에러를 던지기 때문에 try 키워드 사용
+            try data.write(to: dataFilePath(),
+                           options: .atomic)
+        } catch { // do 블럭안의 try 코드행에서 에러가 발생한 경우 catch문이 실행되어 짐
+            print("Error encoding item array: \(error.localizedDescription)")
+        }
+    }
+    
+    func loadChecklistItems() {
+        let path = dataFilePath()
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            do {
+                items = try decoder.decode(
+                    [ChecklistItem].self,
+                    from: data)
+            }catch {
+                print("Error decoding item array: \(error.localizedDescription)")
+            }
+        }
+    }
+}
+// MARK: - Segue
+extension ChecklistViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditItem" {
+            let controller = segue.destination as! ItemDetailViewController
+            controller.delegate = self
+            
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                controller.itemToEdit = items[indexPath.row]
+            }
+        }
     }
 }
 // MARK: - Navigation Method
 extension ChecklistViewController {
     func setNavigationItem() {
-        // Title 같은 아이템 단위의 항목에 대한 수정은 navigationItem을 통해,
-        // 그외에 title의 크기같은 UI 관련 설정은 navigatioBar를 통해 하는걸로 추측
-        navigationItem.title = "CheckList"
-        // 큰 제목으로 표시
-        navigationController?.navigationBar.prefersLargeTitles = true
-        // .append(_:)를 사용하면 추가가 안되는듯?
+        title = checklist.name
+        navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItems = [addButton]
     }
     // MARK: - Actions
@@ -90,7 +129,7 @@ extension ChecklistViewController {
     /// - Parameter sender: UIBarButton 인스턴스
     @objc func moveNextViewController(_ sender: UIBarButtonItem){
         // 스토리보드의 AddItemViewController의 식별자로 불러옴
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "AddItemViewController") as? AddItemViewController else { return }
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "AddItemViewController") as? ItemDetailViewController else { return }
         // AddItemViewController의 델리게이트를 ChecklistViewController로 설정
         vc.delegate = self
         // 네비게이션 컨트롤러로 푸쉬
@@ -98,8 +137,27 @@ extension ChecklistViewController {
     }
 }
 // MARK: - AddItemViewController Delegate
-extension ChecklistViewController: AddItemViewControllerDelegate {
-    func addItemViewController(_ controller: AddItemViewController,
+extension ChecklistViewController: ItemDetailViewControllerDelegate {
+    /// 아이템이 수정되었을 때 호출
+    /// - Parameters:
+    ///   - controller: 호출한 VC
+    ///   - item: 수정된 ChecklistItem
+    func ItemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem) {
+        if let index = items.firstIndex(of: item) {
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = tableView.cellForRow(at: indexPath) {
+                configureText(for: cell, with: item)
+            }
+        }
+        navigationController?.popViewController(animated: true)
+        
+        saveChecklistItems()
+    }
+    /// 아이템이 추가되었을 때 호출
+    /// - Parameters:
+    ///   - controller: 호출한 VC
+    ///   - item: 추가된 ChecklistItem
+    func ItemDetailViewController(_ controller: ItemDetailViewController,
                                didFinishAdding item: ChecklistItem) {
         let newRowIndex = items.count
         items.append(item)
@@ -108,8 +166,12 @@ extension ChecklistViewController: AddItemViewControllerDelegate {
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         navigationController?.popViewController(animated: true)
+        
+        saveChecklistItems()
     }
-    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+    /// 추가가 취소되었을 때 호출
+    /// - Parameter controller: 호출한 VC
+    func ItemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
         navigationController?.popViewController(animated: true)
     }
 }
@@ -145,6 +207,8 @@ extension ChecklistViewController {
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        saveChecklistItems()
     }
     /// 해당 프로토콜 메서드를 구현하면 스와이프 삭제를 활성화,
     /// - Parameters:
@@ -158,6 +222,8 @@ extension ChecklistViewController {
         items.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
+        
+        saveChecklistItems()
     }
 }
 

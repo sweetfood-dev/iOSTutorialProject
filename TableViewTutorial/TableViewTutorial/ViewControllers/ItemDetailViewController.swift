@@ -7,17 +7,20 @@
 
 import UIKit
 
-protocol AddItemViewControllerDelegate: AnyObject {
-  func addItemViewControllerDidCancel(
-    _ controller: AddItemViewController)
-  func addItemViewController(
-    _ controller: AddItemViewController,
-    didFinishAdding item: ChecklistItem
-  )
+protocol ItemDetailViewControllerDelegate: AnyObject {
+    func ItemDetailViewControllerDidCancel(
+        _ controller: ItemDetailViewController)
+    func ItemDetailViewController(
+        _ controller: ItemDetailViewController,
+        didFinishAdding item: ChecklistItem
+    )
+    func ItemDetailViewController(
+        _ controller: ItemDetailViewController,
+        didFinishEditing item: ChecklistItem)
 }
 
-class AddItemViewController: UITableViewController {
-    weak var delegate: AddItemViewControllerDelegate?
+class ItemDetailViewController: UITableViewController {
+    weak var delegate: ItemDetailViewControllerDelegate?
     lazy var doneBarButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(addItemDone(_:)))
         button.isEnabled = false
@@ -28,6 +31,9 @@ class AddItemViewController: UITableViewController {
         let button = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButton(_:)))
         return button
     }()
+    
+    var itemToEdit: ChecklistItem?
+    
     @IBOutlet var textField: UITextField!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,10 +45,16 @@ class AddItemViewController: UITableViewController {
         tableView.allowsSelection = false
         setNavigationItem()
         setTextField()
+        
+        if let item = itemToEdit {
+            title = "Edit Item"
+            textField.text = item.text
+            doneBarButton.isEnabled = true
+        }
     }
 }
 // MARK: - TextField Method
-extension AddItemViewController: UITextFieldDelegate {
+extension ItemDetailViewController: UITextFieldDelegate {
     func setTextField() {
         textField.delegate = self
         // // .edigingDidEndOnExit : 키보드에서 return / done같은 엔터키를 눌렀을 때 발생하는 이벤트
@@ -68,9 +80,9 @@ extension AddItemViewController: UITextFieldDelegate {
         let newText = oldText.replacingCharacters(
             in: stringRange,
             with: string)
-
+        
         doneBarButton.isEnabled = !newText.isEmpty
-
+        
         return true
     }
     
@@ -78,10 +90,10 @@ extension AddItemViewController: UITextFieldDelegate {
         doneBarButton.isEnabled = false
         return true
     }
-
+    
 }
 // MARK: - Navigation Method
-extension AddItemViewController {
+extension ItemDetailViewController {
     func setNavigationItem() {
         navigationItem.rightBarButtonItem = doneBarButton
         navigationItem.leftBarButtonItem = leftButtonItem
@@ -91,19 +103,24 @@ extension AddItemViewController {
     }
     
     @objc func addItemDone(_ sender: UIBarButtonItem) {
-        let item = ChecklistItem()
-        item.text = textField.text!
-        delegate?.addItemViewController(self, didFinishAdding: item)
+        if let item = itemToEdit {
+            item.text = textField.text!
+            delegate?.ItemDetailViewController(self, didFinishEditing: item)
+        }else {
+            let item = ChecklistItem()
+            item.text = textField.text!
+            delegate?.ItemDetailViewController(self, didFinishAdding: item)
+        }
     }
     
     @objc func cancelButton(_ sender: UIBarButtonItem) {
-        delegate?.addItemViewControllerDidCancel(self)
+        delegate?.ItemDetailViewControllerDidCancel(self)
     }
 }
 
 
 // MARK: - Table View Delegate
-extension AddItemViewController {
+extension ItemDetailViewController {
     /// 특정 행을 선택하려 할 때 호출되는 메소드
     /// - Parameters:
     ///   - tableView: 선택될 행의 TableView

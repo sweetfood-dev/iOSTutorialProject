@@ -10,7 +10,7 @@ import Foundation
 /// Checklist의 데이터 모델
 /// text : 할 일
 /// checked : 선택 유무 
-class ChecklistItem {
+class ChecklistItem: NSObject, Codable {
     var text = ""
     var checked = false
 }
