@@ -9,8 +9,6 @@ import UIKit
 import SnapKit
 
 class ChecklistViewController: UITableViewController {
-    /// Checklist의 데이터 모델
-    var items = [ChecklistItem]()
     var checklist: Checklist!
     lazy var addButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(moveNextViewController(_:)))
@@ -21,10 +19,6 @@ class ChecklistViewController: UITableViewController {
         super.viewDidLoad()
         // NavigationViewController Title 설정
         setNavigationItem()
-        
-        // load items
-        loadChecklistItems()
-        
     }
         
     func configureText(for cell: UITableViewCell, with item: ChecklistItem) {
@@ -38,52 +32,6 @@ class ChecklistViewController: UITableViewController {
     }
 }
 
-// MARK: - Documents
-extension ChecklistViewController {
-    /// 샌드박스 Documents 폴더의 전체 경로를 반환
-    /// - Returns: Documents 폴더의 전체 경로
-    func documentsDirectory() -> URL {
-        let paths = FileManager.default.urls(
-            for: .documentDirectory,
-               in: .userDomainMask)
-        return paths[0]
-    }
-    /// documentsDirectory()를 사용하여 체크리스트의 항목을 저장할 파일의 전체 경로를 구성, 파일명은 Checklists.plist
-    /// - Returns: 저장할 파일의 전체 경로
-    func dataFilePath() -> URL {
-        return documentsDirectory().appendingPathComponent("Checklists.plist")
-    }
-    
-    /// items를 Documents에 저장하는 메소드
-    func saveChecklistItems() {
-        // 인코딩 가능한 PropertyListEncoder를 생성
-        let encoder = PropertyListEncoder()
-        // 에러 핸들링 시작
-        do {
-            // items를 인코딩하여 data에 할당, 인코딩할 수 없는 경우 에러를 던지기 때문에 try 키워드 사용
-            let data = try encoder.encode(items)
-            // 인코딩 된 data를 dataFilePath() 경로에 저장, 이 또한 저장할 수 없는 경우 에러를 던지기 때문에 try 키워드 사용
-            try data.write(to: dataFilePath(),
-                           options: .atomic)
-        } catch { // do 블럭안의 try 코드행에서 에러가 발생한 경우 catch문이 실행되어 짐
-            print("Error encoding item array: \(error.localizedDescription)")
-        }
-    }
-    
-    func loadChecklistItems() {
-        let path = dataFilePath()
-        if let data = try? Data(contentsOf: path) {
-            let decoder = PropertyListDecoder()
-            do {
-                items = try decoder.decode(
-                    [ChecklistItem].self,
-                    from: data)
-            }catch {
-                print("Error decoding item array: \(error.localizedDescription)")
-            }
-        }
-    }
-}
 // MARK: - Segue
 extension ChecklistViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -92,7 +40,7 @@ extension ChecklistViewController {
             controller.delegate = self
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-                controller.itemToEdit = items[indexPath.row]
+                controller.itemToEdit = checklist.items[indexPath.row]
             }
         }
     }
@@ -105,26 +53,6 @@ extension ChecklistViewController {
         navigationItem.rightBarButtonItems = [addButton]
     }
     // MARK: - Actions
-    /// 1. 새로운 CheckList 아이템을 만들고
-    /// 2. 데이터 모델 items에 추가한 후
-    /// 3. 테이블 뷰의 새로운 행에 생성한 아이템을 추가
-    /// - Parameter sender: UIBarButton 인스턴스
-    @objc func addItem(_ sender: UIBarButtonItem) {
-        let newRowIndex = items.count
-        // 새로운 아이템 생성 후 추가
-        let item = ChecklistItem()
-        item.text = "i am new row"
-        item.checked = true
-        items.append(item)
-        
-        // IndexPath 설정, 현재 section이 하나이기에 section은 0
-        // row: 마지막 row에 들어가야하기에 newRowIndex는 items.count
-        let indexPath = IndexPath(row: newRowIndex, section: 0)
-        // Array 생성
-        let indexPaths = [indexPath]
-        // indexPaths에 새로 추가한 인덱스 경로들을 tableView에게 삽입하고 업데이트하라고 알림!
-        tableView.insertRows(at: indexPaths, with: .automatic)
-    }
     /// 아이템을 추가하는 AddItemViewController로 이동
     /// - Parameter sender: UIBarButton 인스턴스
     @objc func moveNextViewController(_ sender: UIBarButtonItem){
@@ -143,15 +71,13 @@ extension ChecklistViewController: ItemDetailViewControllerDelegate {
     ///   - controller: 호출한 VC
     ///   - item: 수정된 ChecklistItem
     func ItemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem) {
-        if let index = items.firstIndex(of: item) {
+        if let index = checklist.items.firstIndex(of: item) {
             let indexPath = IndexPath(row: index, section: 0)
             if let cell = tableView.cellForRow(at: indexPath) {
                 configureText(for: cell, with: item)
             }
         }
         navigationController?.popViewController(animated: true)
-        
-        saveChecklistItems()
     }
     /// 아이템이 추가되었을 때 호출
     /// - Parameters:
@@ -159,15 +85,13 @@ extension ChecklistViewController: ItemDetailViewControllerDelegate {
     ///   - item: 추가된 ChecklistItem
     func ItemDetailViewController(_ controller: ItemDetailViewController,
                                didFinishAdding item: ChecklistItem) {
-        let newRowIndex = items.count
-        items.append(item)
+        let newRowIndex = checklist.items.count
+        checklist.items.append(item)
         
         let indexPath = IndexPath(row: newRowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         navigationController?.popViewController(animated: true)
-        
-        saveChecklistItems()
     }
     /// 추가가 취소되었을 때 호출
     /// - Parameter controller: 호출한 VC
@@ -181,13 +105,13 @@ extension ChecklistViewController: ItemDetailViewControllerDelegate {
 extension ChecklistViewController {
     // 섹션에서 보여줄 총 행의 갯수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return checklist.items.count
     }
     // 각 행에 보여줄 데이터를 셀을통해 보여줌
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // ChecklistItem 식별자를 가진 셀을 재사용
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
-        let item = items[indexPath.row]
+        let item = checklist.items[indexPath.row]
         configureText(for: cell, with: item)
         configureCheck(for: cell, with: item)
         return cell
@@ -201,14 +125,12 @@ extension ChecklistViewController {
                             didSelectRowAt indexPath: IndexPath) {
         
         if let cell = tableView.cellForRow(at: indexPath) {
-            let item = items[indexPath.row]
+            let item = checklist.items[indexPath.row]
             item.checked.toggle()
             configureCheck(for: cell, with: item)
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        saveChecklistItems()
     }
     /// 해당 프로토콜 메서드를 구현하면 스와이프 삭제를 활성화,
     /// - Parameters:
@@ -219,11 +141,9 @@ extension ChecklistViewController {
                             commit editingStyle: UITableViewCell.EditingStyle,
                             forRowAt indexPath: IndexPath
     ) {
-        items.remove(at: indexPath.row)
+        checklist.items.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
-        
-        saveChecklistItems()
     }
 }
 
