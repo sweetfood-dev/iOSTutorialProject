@@ -13,13 +13,28 @@ class AllListViewController: UITableViewController {
         return button
     }()
     let cellIdentifier = "ChecklistCell"
-    var lists = [Checklist]()
+    var dataModel: DataModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItem()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        loadChecklists()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.delegate = self
+        let index = dataModel.indexOfSelectedChecklist
+        if index >= 0 && index < dataModel.lists.count {
+            let checklist = dataModel.lists[index]
+            performSegue(withIdentifier: "ShowChecklist",
+                         sender: checklist)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 }
 // MARK: - Navigation Controller
@@ -39,24 +54,53 @@ extension AllListViewController {
     }
 }
 
+// MARK: - Navigation ViewController Delegate
+extension AllListViewController: UINavigationControllerDelegate {
+    func navigationController(
+        _ navigationController: UINavigationController,
+        willShow viewController: UIViewController,
+        animated: Bool
+    ) {
+        if viewController === self {
+            dataModel.indexOfSelectedChecklist = -1
+        }
+    }
+}
+
 // MARK: - TableView DataSource
 extension AllListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lists.count
+        return dataModel.lists.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        let checklist = lists[indexPath.row]
+        let cell: UITableViewCell!
+        if let tmp = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
+            cell = tmp
+        }else {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
+        }
+        
+        let checklist = dataModel.lists[indexPath.row]
         cell.textLabel!.text = checklist.name
+        let count = checklist.countUncheckItems()
+        if checklist.items.count == 0 {
+            cell.detailTextLabel!.text = "(No Items)"
+        }else {
+            cell.detailTextLabel!.text = count == 0 ? "All Done" : "\(count) Remaining"
+        }
         cell.accessoryType = .detailDisclosureButton
+        cell.imageView!.image = UIImage(named: checklist.iconName)
         return cell
     }
 }
 // MARK: - TableView Delegate
 extension AllListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let checklist = lists[indexPath.row]
+        
+        dataModel.indexOfSelectedChecklist = indexPath.row
+        
+        let checklist = dataModel.lists[indexPath.row]
         performSegue(withIdentifier: "ShowChecklist", sender: checklist)
     }
     /// 악세사리 버튼이 탭되었을 때 호출되는 메서드
@@ -65,7 +109,7 @@ extension AllListViewController {
     ///   - indexPath: 이 이벤트를 호출한 행
     override func tableView(_ tableView: UITableView,
                             accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let list = lists[indexPath.row]
+        let list = dataModel.lists[indexPath.row]
         let vc = storyboard?.instantiateViewController(withIdentifier: "ListDetailViewController") as! ListDetailViewController
         vc.delegate = self
         vc.checklistToEdit = list
@@ -78,7 +122,7 @@ extension AllListViewController {
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCell.EditingStyle,
                             forRowAt indexPath: IndexPath) {
-        lists.remove(at: indexPath.row)
+        dataModel.lists.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
@@ -105,70 +149,18 @@ extension AllListViewController: ListDetailViewControllerDelegate {
     
     func listDetailViewController(_ controller: ListDetailViewController,
                                   didFinishAdding checklist: Checklist) {
-        let index = lists.count
-        let indexPath = IndexPath(row: index, section: 0)
-        let indexPaths = [indexPath]
-        lists.append(checklist)
-        tableView.insertRows(at: indexPaths, with: .automatic)
+        dataModel.lists.append(checklist)
+        dataModel.sortChecklists()
+        tableView.reloadData()
         navigationController?.popViewController(animated: true)
     }
     
     func listDetailViewController(_ controller: ListDetailViewController,
                                   didFinishEditing checklist: Checklist) {
-        if let index = lists.firstIndex(of: checklist) {
-            let indexPath = IndexPath(row: index, section: 0)
-            if let cell = tableView.cellForRow(at: indexPath) {
-                cell.textLabel!.text = checklist.name
-            }
-        }
+        dataModel.sortChecklists()
+        tableView.reloadData()
         navigationController?.popViewController(animated: true)
     }
     
     
-}
-
-
-// MARK: - Documents
-extension AllListViewController {
-    // MARK: - Data Saving
-    func documentsDirectory() -> URL {
-      let paths = FileManager.default.urls(
-        for: .documentDirectory,
-        in: .userDomainMask)
-      return paths[0]
-    }
-
-    func dataFilePath() -> URL {
-      return documentsDirectory().appendingPathComponent("Checklists.plist")
-    }
-
-    // this method is now called saveChecklists()
-    func saveChecklists() {
-      let encoder = PropertyListEncoder()
-      do {
-        // You encode lists instead of "items"
-        let data = try encoder.encode(lists)
-        try data.write(
-          to: dataFilePath(),
-          options: Data.WritingOptions.atomic)
-      } catch {
-        print("Error encoding list array: \(error.localizedDescription)")
-      }
-    }
-
-    // this method is now called loadChecklists()
-    func loadChecklists() {
-      let path = dataFilePath()
-      if let data = try? Data(contentsOf: path) {
-        let decoder = PropertyListDecoder()
-        do {
-          // You decode to an object of [Checklist] type to lists
-          lists = try decoder.decode(
-            [Checklist].self,
-            from: data)
-        } catch {
-          print("Error decoding list array: \(error.localizedDescription)")
-        }
-      }
-    }
 }

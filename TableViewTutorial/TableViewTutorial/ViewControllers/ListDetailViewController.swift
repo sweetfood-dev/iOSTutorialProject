@@ -31,8 +31,10 @@ class ListDetailViewController: UITableViewController {
     
     weak var delegate: ListDetailViewControllerDelegate?
     var checklistToEdit: Checklist?
+    var iconName = "Folder"
     
     @IBOutlet var textField: UITextField!
+    @IBOutlet weak var iconImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +45,10 @@ class ListDetailViewController: UITableViewController {
             title = "Edit Checklist"
             textField.text = checklist.name
             doneBarButton.isEnabled = true
+            iconName = checklist.iconName
         }
         
+        iconImage.image = UIImage(named: iconName)
         textField.addTarget(self, action: #selector(done), for: .editingDidEndOnExit)
     }
     
@@ -53,7 +57,14 @@ class ListDetailViewController: UITableViewController {
         textField.becomeFirstResponder()
     }
 }
-
+// MARK: - IconPickerViewControllerDelegate
+extension ListDetailViewController: IconPickerViewControllerDelegate {
+    func iconPicker(_ picker: IconPickerViewController, didPick iconName: String) {
+        self.iconName = iconName
+        iconImage.image = UIImage(named: iconName)
+        navigationController?.popViewController(animated: true)
+    }
+}
 // MARK: - UI Setup
 extension ListDetailViewController {
     func setupUILayout() {
@@ -64,6 +75,13 @@ extension ListDetailViewController {
     func setNavigation() {
         navigationItem.rightBarButtonItem = doneBarButton
         navigationItem.leftBarButtonItem = cancelBarButton
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PickIcon" {
+            let destination = segue.destination as! IconPickerViewController
+            destination.delegate = self
+        }
     }
 }
 
@@ -76,10 +94,11 @@ extension ListDetailViewController {
     @objc func done() {
         if let checklist = checklistToEdit {
             checklist.name = textField.text!
+            checklist.iconName = iconName
             delegate?.listDetailViewController(self,
                                                didFinishEditing: checklist)
         }else {
-            let checklist = Checklist(name: textField.text!)
+            let checklist = Checklist(name: textField.text!, iconName: iconName)
             delegate?.listDetailViewController(self,
                                                didFinishAdding: checklist)
         }
@@ -115,7 +134,7 @@ extension ListDetailViewController {
         _ tableView: UITableView,
         willSelectRowAt indexPath: IndexPath
     ) -> IndexPath? {
-        return nil
+        return indexPath.section == 1 ? indexPath : nil
     }
     
 }

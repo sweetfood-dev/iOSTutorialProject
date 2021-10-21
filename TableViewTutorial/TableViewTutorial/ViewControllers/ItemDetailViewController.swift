@@ -35,6 +35,8 @@ class ItemDetailViewController: UITableViewController {
     var itemToEdit: ChecklistItem?
     
     @IBOutlet var textField: UITextField!
+    @IBOutlet weak var shouldRemindSwitch: UISwitch!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,6 +52,8 @@ class ItemDetailViewController: UITableViewController {
             title = "Edit Item"
             textField.text = item.text
             doneBarButton.isEnabled = true
+            shouldRemindSwitch.isOn = item.shouldRemind
+            datePicker.date = item.dueDate
         }
     }
 }

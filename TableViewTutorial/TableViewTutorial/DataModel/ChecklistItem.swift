@@ -13,4 +13,15 @@ import Foundation
 class ChecklistItem: NSObject, Codable {
     var text = ""
     var checked = false
+    /// 언제 노티피케이션을 발생 시킬 건지
+    var dueDate = Date()
+    /// 노티피케이션을 발생 여부
+    var shouldRemind = false
+    /// 노티피케이션의 identifier로 사용할 Int 타입 
+    var itemId = -1
+    
+    override init() {
+        super.init()
+        itemId = DataModel.nextChecklistItemID()
+    }
 }

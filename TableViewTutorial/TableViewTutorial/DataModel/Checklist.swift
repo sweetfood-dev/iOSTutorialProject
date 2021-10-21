@@ -9,10 +9,17 @@ import UIKit
 
 class Checklist: NSObject, Codable {
     var name = ""
-    var items = [ChecklistItem]() 
-    init(name: String) {
+    var items = [ChecklistItem]()
+    var iconName = "No icon"
+    init(name: String, iconName: String = "No Icon") {
         super.init()
         self.name = name
+        self.iconName = iconName
+    }
+    
+    func countUncheckItems() -> Int {
+        return items.filter {
+            !$0.checked }.count
     }
 }
 
