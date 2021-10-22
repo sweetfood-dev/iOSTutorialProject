@@ -47,7 +47,7 @@ class ItemDetailViewController: UITableViewController {
         tableView.allowsSelection = false
         setNavigationItem()
         setTextField()
-        
+        shouldRemindSwitch.addTarget(self, action: #selector(shouldReminderToggled(_:)), for: .valueChanged)
         if let item = itemToEdit {
             title = "Edit Item"
             textField.text = item.text
@@ -55,6 +55,16 @@ class ItemDetailViewController: UITableViewController {
             shouldRemindSwitch.isOn = item.shouldRemind
             datePicker.date = item.dueDate
         }
+    }
+    @IBAction func shouldRemindToggled2(_ switchControl: UISwitch) {
+      textField.resignFirstResponder()
+
+      if switchControl.isOn {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) {_, _ in
+          // do nothing
+        }
+      }
     }
 }
 // MARK: - TextField Method
@@ -109,10 +119,18 @@ extension ItemDetailViewController {
     @objc func addItemDone(_ sender: UIBarButtonItem) {
         if let item = itemToEdit {
             item.text = textField.text!
+            
+            item.shouldRemind = shouldRemindSwitch.isOn
+            item.dueDate = datePicker.date
+            item.scheduleNotification()
             delegate?.ItemDetailViewController(self, didFinishEditing: item)
         }else {
             let item = ChecklistItem()
             item.text = textField.text!
+            
+            item.shouldRemind = shouldRemindSwitch.isOn
+            item.dueDate = datePicker.date
+            item.scheduleNotification()
             delegate?.ItemDetailViewController(self, didFinishAdding: item)
         }
     }
@@ -133,5 +151,24 @@ extension ItemDetailViewController {
     override func tableView(_ tableView: UITableView,
                             willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         nil
+    }
+}
+
+// TODO: 토글 이벤트 수신이 안됨
+// MARK: - ACtions
+extension ItemDetailViewController {
+    @objc func shouldReminderToggled(_ switchControl: UISwitch) {
+        textField.resignFirstResponder()
+        print("toggle")
+        if switchControl.isOn {
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+                if let error = error {
+                    print("notification Error \(error.localizedDescription)")
+                    return
+                }
+                if granted { print("get notification permission") }
+            }
+        }
     }
 }

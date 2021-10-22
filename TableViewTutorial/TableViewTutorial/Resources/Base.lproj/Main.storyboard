@@ -161,20 +161,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="va9-oy-2Fb">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="va9-oy-2Fb" id="Q2U-fd-Ffk">
-                                    <rect key="frame" x="0.0" y="0.0" width="373.5" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="373.5" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEI-j4-M2f">
-                                            <rect key="frame" x="30" y="11" width="327.5" height="21"/>
+                                            <rect key="frame" x="30" y="11" width="327.5" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="√" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dn-wp-JTd">
-                                            <rect key="frame" x="8" y="8" width="14" height="27"/>
+                                            <rect key="frame" x="8" y="8.5" width="14" height="27"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
