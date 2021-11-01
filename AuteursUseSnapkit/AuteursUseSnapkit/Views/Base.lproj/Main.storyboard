@@ -22,7 +22,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="944.92753623188412" y="81.696428571428569"/>
+            <point key="canvasLocation" x="868" y="82"/>
+        </scene>
+        <!--Auteur Detail View Controller-->
+        <scene sceneID="SV7-Ru-Rba">
+            <objects>
+                <viewController storyboardIdentifier="AuteurDetailViewController" id="rMn-a0-gvy" customClass="AuteurDetailViewController" customModule="AuteursUseSnapkit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xwr-md-I86">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="t6q-HB-Guf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7vQ-8n-gub"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZMP-nC-IJw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1683" y="82"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nY1-gd-zjo">

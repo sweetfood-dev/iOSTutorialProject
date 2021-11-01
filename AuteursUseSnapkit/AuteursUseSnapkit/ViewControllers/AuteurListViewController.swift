@@ -10,23 +10,37 @@ import SnapKit
 
 
 class AuteurListViewController: UIViewController {
+    let auteurs = Auteur.auteursFromBundle()
+    
     lazy var tableView: UITableView = {
-       let tableView = UITableView()
+        let tableView = UITableView(frame: CGRect(), style: .plain)
         tableView.backgroundColor = UIColor.init(named: "AuteursBackground")
+        AuteurTableViewCell.register(tableView: tableView)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = .opaqueSeparator
+        tableView.separatorInsetReference = .fromAutomaticInsets
         return tableView
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?
-          .navigationBar
-          .largeTitleTextAttributes =
-            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 34, weight: .bold)]
+            .navigationBar
+            .largeTitleTextAttributes =
+        [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 34, weight: .bold)]
         navigationItem.largeTitleDisplayMode = .automatic
-        navigationController?.navigationBar.prefersLargeTitles = true
         title = "Auteurs"
-        setDelegate()
+        
+        self.view.addSubview(tableView)
+        
         setupUI()
+        setDelegate()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func setDelegate() {
@@ -34,68 +48,34 @@ class AuteurListViewController: UIViewController {
         tableView.dataSource = self
     }
     func setupUI() {
-        view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.leading.trailing.bottom.equalToSuperview()
         }
     }
-
+    
 }
 
 extension AuteurListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        return auteurs.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "\(AuteurDetailViewController.self)") as! AuteurDetailViewController
+        vc.selectedAuteur = auteurs[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 extension AuteurListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = AuteurTableViewCell.dequeueReusableCell(tableView: tableView)
         
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        cell.textLabel?.text = "test"
-        cell.textLabel?.textColor = .systemGray4
-        cell.backgroundColor = UIColor(named: "AuteursBackground")
-        return cell
+        let auteur = auteurs[indexPath.row]
+        return cell.configure(name: auteur.name,
+                               bio: auteur.bio,
+                               source: auteur.source,
+                               imageName: auteur.image)
     }
     
     
 }
-
-#if DEBUG
-import SwiftUI
-struct LandscapeModifier: ViewModifier {
-    let height = UIScreen.main.bounds.width // 1
-    let width = UIScreen.main.bounds.height // 2
-    
-    func body(content: Content) -> some View {
-        content
-            .previewLayout(.fixed(width: width, height: height)) // 3
-            .environment(\.horizontalSizeClass, .compact)
-            .environment(\.verticalSizeClass, .compact)
-    }
-}
-
-
-extension View {
-    func landscape() -> some View {
-        self.modifier(LandscapeModifier())
-    }
-}
-
-struct ViewControllerRepresentable: UIViewControllerRepresentable {
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-    }
-    
-    @available(iOS 13, *)
-    func makeUIViewController(context: Context) -> UIViewController {
-        AuteurListViewController()
-    }
-}
-
-struct ViewController_Preview: PreviewProvider {
-    static var previews: some View {
-        ViewControllerRepresentable()
-            .previewDisplayName("CloneCoding - Auteurs")
-    }
-}
-#endif

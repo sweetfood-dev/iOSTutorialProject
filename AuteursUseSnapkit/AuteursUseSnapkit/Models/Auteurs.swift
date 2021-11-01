@@ -5,7 +5,7 @@
 //  Created by todoc on 2021/10/28.
 //
 
-import Foundation
+import UIKit
 
 struct Auteurs: Codable {
     let auteurs: [Auteur]
@@ -14,10 +14,11 @@ struct Auteurs: Codable {
 struct Auteur: Codable {
     let name: String
     let bio: String
-    let image: String
     let source: String
-    let films: [Film]
+    let image: String
+    var films: [Film]
     
+    // Decode JSON
     static func auteursFromBundle() -> [Auteur] {
         var auteurs: [Auteur] = []
         guard let url = Bundle.main.url(forResource: "auteurs", withExtension: "json") else {

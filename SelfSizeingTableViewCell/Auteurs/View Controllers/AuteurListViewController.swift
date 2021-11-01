@@ -61,10 +61,12 @@ class AuteurListViewController: UIViewController {
 
 extension AuteurListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    auteurs.count
+    print("numberOfRowsInSection")
+    return auteurs.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    print("cellForRowAt")
     let cell = tableView.dequeueReusableCell(
       withIdentifier: "AuteurCell", for: indexPath) as? AuteurTableViewCell
     ?? AuteurTableViewCell(style: .default, reuseIdentifier: "AuteurCell")

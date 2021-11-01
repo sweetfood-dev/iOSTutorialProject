@@ -47,9 +47,9 @@ struct Auteur: Codable {
   static func auteursFromBundle() -> [Auteur] {
     var auteurs: [Auteur] = []
     guard let url = Bundle.main.url(forResource: "auteurs", withExtension: "json") else {
+      print("guard")
       return []
     }
-
     do {
       let data = try Data(contentsOf: url)
       let json = try JSONDecoder().decode(Auteurs.self, from: data)

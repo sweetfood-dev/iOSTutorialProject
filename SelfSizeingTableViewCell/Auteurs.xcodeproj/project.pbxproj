@@ -19,6 +19,8 @@
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
 		E2BF9EBB2682019B000568C5 /* AuteurTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF9EBA2682019B000568C5 /* AuteurTableViewCell.swift */; };
 		F93B178727293E1000383BC0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F93B178627293E1000383BC0 /* SnapKit */; };
+		F956E802272BDEE300C50841 /* AuteurDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F956E801272BDEE300C50841 /* AuteurDetailTableViewCell.swift */; };
+		F956E804272BDEED00C50841 /* UITableViewRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F956E803272BDEED00C50841 /* UITableViewRegisterable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		D2A5F20F1F4A9144005CD714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2BF9EBA2682019B000568C5 /* AuteurTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuteurTableViewCell.swift; sourceTree = "<group>"; };
+		F956E801272BDEE300C50841 /* AuteurDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuteurDetailTableViewCell.swift; sourceTree = "<group>"; };
+		F956E803272BDEED00C50841 /* UITableViewRegisterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewRegisterable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
 				E2BF9EBA2682019B000568C5 /* AuteurTableViewCell.swift */,
 				17AEBADD214F655B005EDCDF /* FilmTableViewCell.swift */,
+				F956E801272BDEE300C50841 /* AuteurDetailTableViewCell.swift */,
+				F956E803272BDEED00C50841 /* UITableViewRegisterable.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,7 +231,9 @@
 				E2BF9EBB2682019B000568C5 /* AuteurTableViewCell.swift in Sources */,
 				17AEBAD8214F5604005EDCDF /* Film.swift in Sources */,
 				17AEBAD6214F55F7005EDCDF /* Auteur.swift in Sources */,
+				F956E802272BDEE300C50841 /* AuteurDetailTableViewCell.swift in Sources */,
 				17AEBADC214F6412005EDCDF /* AuteurDetailViewController.swift in Sources */,
+				F956E804272BDEED00C50841 /* UITableViewRegisterable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

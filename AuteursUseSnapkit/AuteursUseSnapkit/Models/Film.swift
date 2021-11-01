@@ -13,6 +13,7 @@ struct Film: Codable {
     let year: String
     let poster: String
     let plot: String
+    var isExtended: Bool
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -20,5 +21,6 @@ struct Film: Codable {
         year = try container.decode(String.self, forKey: .year)
         poster = try container.decode(String.self, forKey: .poster)
         plot = try container.decode(String.self, forKey: .plot)
+        isExtended = false
     }
 }
