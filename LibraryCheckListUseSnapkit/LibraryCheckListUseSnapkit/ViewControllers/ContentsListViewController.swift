@@ -1,14 +1,17 @@
 //
-//  ViewController.swift
+//  ContentsListViewController.swift
 //  LibraryCheckListUseSnapkit
 //
-//  Created by todoc on 2021/11/01.
+//  Created by todoc on 2021/11/02.
 //
 
 import UIKit
-import SnapKit
 
-class ChecklistViewController: UIViewController {
+class ContentsListViewController: UIViewController {
+    static let storyboardIdentifier: String = "ContentsListViewController"
+    
+    var category: CheckItem?
+    
     lazy var tableView: UITableView = {
         let tv = UITableView(frame: CGRect.zero, style: .plain)
         tv.separatorStyle = .singleLine
@@ -22,17 +25,17 @@ class ChecklistViewController: UIViewController {
         tv.backgroundColor = .systemGray
         return tv
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setNavigationBar()
         addSubViews()
-        setTableView()
         setAutoLayout()
+        setTableView()
     }
     private func setNavigationBar() {
-        title = "Category"
-        self.navigationItem.rightBarButtonItem = editButtonItem
+        title = category?.title
+//        navigationItem.rightBarButtonItem = editButtonItem
     }
     private func addSubViews() {
         view.addSubview(tableView)
@@ -41,8 +44,8 @@ class ChecklistViewController: UIViewController {
     private func setTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        CheckListCell.register(tableView)
     }
+    
     private func setAutoLayout() {
         tableView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -50,34 +53,30 @@ class ChecklistViewController: UIViewController {
     }
 }
 
-// MARK: - TableView Delegate
-extension ChecklistViewController: UITableViewDelegate {
+extension ContentsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = CheckItem.items[indexPath.row]
-        let vc = storyboard?.instantiateViewController(withIdentifier: ContentsListViewController.storyboardIdentifier) as! ContentsListViewController
-        vc.category = item
-        navigationController?.pushViewController(vc, animated: true)
     }
 }
-// MARK: - TableView DataSource
-extension ChecklistViewController: UITableViewDataSource {
+
+extension ContentsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CheckItem.items.count
+        return 1
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = CheckListCell.dequeueReusableCell(tableView)
-        let item = CheckItem.items[indexPath.row]
-        return cell.configure(item)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "testCell") ?? UITableViewCell(style: .default, reuseIdentifier: "testCell")
+        cell.textLabel?.text = category?.title
+        cell.selectionStyle = .none
+        return cell
     }
 }
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
 
-struct ViewContollrer_Preview: PreviewProvider {
+struct ContentsListViewController_Preview: PreviewProvider {
     static var previews: some View {
-        ChecklistViewController().showPreview()
+        ContentsListViewController().showPreview()
     }
 }
 #endif
+
