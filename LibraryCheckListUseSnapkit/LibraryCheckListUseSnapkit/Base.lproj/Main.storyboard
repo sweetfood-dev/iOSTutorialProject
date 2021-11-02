@@ -24,6 +24,21 @@
             </objects>
             <point key="canvasLocation" x="944.92753623188412" y="81.696428571428569"/>
         </scene>
+        <!--Add New List View Controller-->
+        <scene sceneID="EEp-Tn-nhc">
+            <objects>
+                <viewController storyboardIdentifier="AddNewListViewController" id="0jO-fR-PbE" customClass="AddNewListViewController" customModule="LibraryCheckListUseSnapkit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xy2-aS-uAf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bTb-sb-x55"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xBF-ok-k7B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1787" y="-223"/>
+        </scene>
         <!--Contents List View Controller-->
         <scene sceneID="0D8-1d-FPY">
             <objects>
@@ -37,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Cx-Mq-t3R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1610" y="82"/>
+            <point key="canvasLocation" x="1741" y="473"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ozL-cA-rbN">

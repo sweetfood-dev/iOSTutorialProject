@@ -19,6 +19,10 @@
 		F934CB72272FC3DF005E9767 /* CheckListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934CB71272FC3DF005E9767 /* CheckListCell.swift */; };
 		F934CB75272FC649005E9767 /* UITableVIewCell+Registerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934CB74272FC649005E9767 /* UITableVIewCell+Registerable.swift */; };
 		F934CB77273103A5005E9767 /* ContentsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934CB76273103A5005E9767 /* ContentsListViewController.swift */; };
+		F934CB7A27312864005E9767 /* ChecklistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934CB7927312864005E9767 /* ChecklistHeaderView.swift */; };
+		F934CB7E27312A01005E9767 /* ChecklistHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F934CB7D27312A01005E9767 /* ChecklistHeaderView.xib */; };
+		F934CB8027312DD5005E9767 /* AddNewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934CB7F27312DD5005E9767 /* AddNewListViewController.swift */; };
+		F934CB82273136C9005E9767 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934CB81273136C9005E9767 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,10 @@
 		F934CB71272FC3DF005E9767 /* CheckListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListCell.swift; sourceTree = "<group>"; };
 		F934CB74272FC649005E9767 /* UITableVIewCell+Registerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableVIewCell+Registerable.swift"; sourceTree = "<group>"; };
 		F934CB76273103A5005E9767 /* ContentsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsListViewController.swift; sourceTree = "<group>"; };
+		F934CB7927312864005E9767 /* ChecklistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistHeaderView.swift; sourceTree = "<group>"; };
+		F934CB7D27312A01005E9767 /* ChecklistHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChecklistHeaderView.xib; sourceTree = "<group>"; };
+		F934CB7F27312DD5005E9767 /* AddNewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewListViewController.swift; sourceTree = "<group>"; };
+		F934CB81273136C9005E9767 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,7 @@
 			children = (
 				F934CB53272FB2C6005E9767 /* ChecklistViewController.swift */,
 				F934CB76273103A5005E9767 /* ContentsListViewController.swift */,
+				F934CB7F27312DD5005E9767 /* AddNewListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -96,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				F934CB65272FB446005E9767 /* CheckItem.swift */,
+				F934CB81273136C9005E9767 /* DataManager.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -111,6 +121,7 @@
 		F934CB6F272FC3C4005E9767 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F934CB782731283C005E9767 /* HeaderViews */,
 				F934CB70272FC3CB005E9767 /* Cell */,
 			);
 			path = Views;
@@ -130,6 +141,15 @@
 				F934CB74272FC649005E9767 /* UITableVIewCell+Registerable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F934CB782731283C005E9767 /* HeaderViews */ = {
+			isa = PBXGroup;
+			children = (
+				F934CB7927312864005E9767 /* ChecklistHeaderView.swift */,
+				F934CB7D27312A01005E9767 /* ChecklistHeaderView.xib */,
+			);
+			path = HeaderViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +218,7 @@
 			files = (
 				F934CB5C272FB2C6005E9767 /* LaunchScreen.storyboard in Resources */,
 				F934CB59272FB2C6005E9767 /* Assets.xcassets in Resources */,
+				F934CB7E27312A01005E9767 /* ChecklistHeaderView.xib in Resources */,
 				F934CB57272FB2C6005E9767 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,11 +231,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F934CB77273103A5005E9767 /* ContentsListViewController.swift in Sources */,
+				F934CB8027312DD5005E9767 /* AddNewListViewController.swift in Sources */,
+				F934CB7A27312864005E9767 /* ChecklistHeaderView.swift in Sources */,
 				F934CB54272FB2C6005E9767 /* ChecklistViewController.swift in Sources */,
 				F934CB50272FB2C6005E9767 /* AppDelegate.swift in Sources */,
 				F934CB72272FC3DF005E9767 /* CheckListCell.swift in Sources */,
 				F934CB6B272FBB67005E9767 /* PreViewModule.swift in Sources */,
 				F934CB52272FB2C6005E9767 /* SceneDelegate.swift in Sources */,
+				F934CB82273136C9005E9767 /* DataManager.swift in Sources */,
 				F934CB75272FC649005E9767 /* UITableVIewCell+Registerable.swift in Sources */,
 				F934CB66272FB446005E9767 /* CheckItem.swift in Sources */,
 			);
