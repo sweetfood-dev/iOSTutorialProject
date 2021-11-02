@@ -8,6 +8,11 @@
 import UIKit
 import SnapKit
 
+enum SectionType: String, CaseIterable {
+    case addNew = "추가"
+    case category = "분류"
+}
+
 class ChecklistViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tv = UITableView(frame: CGRect.zero, style: .plain)
@@ -16,10 +21,6 @@ class ChecklistViewController: UIViewController {
         tv.separatorInsetReference = .fromAutomaticInsets
         tv.rowHeight = UITableView.automaticDimension
         tv.estimatedRowHeight = UITableView.automaticDimension
-        
-        
-        // 임시로 회색
-        tv.backgroundColor = .systemGray
         return tv
     }()
     override func viewDidLoad() {
@@ -53,7 +54,12 @@ class ChecklistViewController: UIViewController {
 // MARK: - TableView Delegate
 extension ChecklistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = CheckItem.items[indexPath.row]
+        
+        let section = indexPath.section
+        let index = indexPath.row
+        
+        if section == 0 { return }
+        let item = CheckItem.items[index]
         let vc = storyboard?.instantiateViewController(withIdentifier: ContentsListViewController.storyboardIdentifier) as! ContentsListViewController
         vc.category = item
         navigationController?.pushViewController(vc, animated: true)
@@ -61,14 +67,33 @@ extension ChecklistViewController: UITableViewDelegate {
 }
 // MARK: - TableView DataSource
 extension ChecklistViewController: UITableViewDataSource {
+        
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return SectionType.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return SectionType.allCases[section].rawValue
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CheckItem.items.count
+        return section == 0 ? 1 : CheckItem.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = CheckListCell.dequeueReusableCell(tableView)
-        let item = CheckItem.items[indexPath.row]
-        return cell.configure(item)
+        let section = indexPath.section
+        let index = indexPath.row
+        
+        if section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddHeader") ?? UITableViewCell(style: .default, reuseIdentifier: "AddHeader")
+            cell.textLabel?.text = SectionType.allCases[section].rawValue
+            cell.selectionStyle = .none
+            return cell
+        }else {
+            let cell = CheckListCell.dequeueReusableCell(tableView)
+            let item = CheckItem.items[index]
+            return cell.configure(item)
+        }
     }
 }
 
