@@ -70,7 +70,7 @@ class CheckListCell: UITableViewCell {
 // MARK: - Set Cell Contents
 extension CheckListCell {
     func configure(_ item: CheckItem) -> Self {
-        imageIcon.image = UIImage(named: item.thumbNail)
+        imageIcon.image = item.thumbNail.image
         titleLabel.text = item.title
         subLabel.text = item.itemCount
         
