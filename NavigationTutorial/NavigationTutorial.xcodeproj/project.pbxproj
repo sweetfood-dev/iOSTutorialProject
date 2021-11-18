@@ -16,6 +16,8 @@
 		F93B4D6B274501D1009F0A40 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D6A274501D1009F0A40 /* SecondViewController.swift */; };
 		F93B4D6D2745DE26009F0A40 /* Navigationable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D6C2745DE26009F0A40 /* Navigationable.swift */; };
 		F93B4D6F2745EDE5009F0A40 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D6E2745EDE5009F0A40 /* ThirdViewController.swift */; };
+		F93B4D7327464067009F0A40 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D7227464067009F0A40 /* MainViewController.swift */; };
+		F93B4D75274646BE009F0A40 /* CustomRightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D74274646BE009F0A40 /* CustomRightViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		F93B4D6A274501D1009F0A40 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		F93B4D6C2745DE26009F0A40 /* Navigationable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigationable.swift; sourceTree = "<group>"; };
 		F93B4D6E2745EDE5009F0A40 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		F93B4D7227464067009F0A40 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F93B4D74274646BE009F0A40 /* CustomRightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRightViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,17 +66,35 @@
 		F93B4D522744D3F3009F0A40 /* NavigationTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				F93B4D712746404E009F0A40 /* AppleNavBarTutorial */,
+				F93B4D702746401B009F0A40 /* UINavigationControllerTutorial */,
 				F93B4D532744D3F3009F0A40 /* AppDelegate.swift */,
 				F93B4D552744D3F3009F0A40 /* SceneDelegate.swift */,
-				F93B4D572744D3F3009F0A40 /* ViewController.swift */,
 				F93B4D5C2744D3F5009F0A40 /* Assets.xcassets */,
 				F93B4D5E2744D3F5009F0A40 /* LaunchScreen.storyboard */,
 				F93B4D612744D3F5009F0A40 /* Info.plist */,
+			);
+			path = NavigationTutorial;
+			sourceTree = "<group>";
+		};
+		F93B4D702746401B009F0A40 /* UINavigationControllerTutorial */ = {
+			isa = PBXGroup;
+			children = (
+				F93B4D572744D3F3009F0A40 /* ViewController.swift */,
 				F93B4D6A274501D1009F0A40 /* SecondViewController.swift */,
 				F93B4D6C2745DE26009F0A40 /* Navigationable.swift */,
 				F93B4D6E2745EDE5009F0A40 /* ThirdViewController.swift */,
 			);
-			path = NavigationTutorial;
+			path = UINavigationControllerTutorial;
+			sourceTree = "<group>";
+		};
+		F93B4D712746404E009F0A40 /* AppleNavBarTutorial */ = {
+			isa = PBXGroup;
+			children = (
+				F93B4D7227464067009F0A40 /* MainViewController.swift */,
+				F93B4D74274646BE009F0A40 /* CustomRightViewController.swift */,
+			);
+			path = AppleNavBarTutorial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,7 +173,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F93B4D7327464067009F0A40 /* MainViewController.swift in Sources */,
 				F93B4D6B274501D1009F0A40 /* SecondViewController.swift in Sources */,
+				F93B4D75274646BE009F0A40 /* CustomRightViewController.swift in Sources */,
 				F93B4D582744D3F3009F0A40 /* ViewController.swift in Sources */,
 				F93B4D542744D3F3009F0A40 /* AppDelegate.swift in Sources */,
 				F93B4D6D2745DE26009F0A40 /* Navigationable.swift in Sources */,

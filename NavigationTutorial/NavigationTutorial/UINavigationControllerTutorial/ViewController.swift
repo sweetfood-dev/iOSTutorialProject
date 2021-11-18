@@ -30,6 +30,11 @@ class ViewController: UIViewController, Navigationable {
         title = "ab"
         view.backgroundColor = .white
         setAutoLayout()
+        
+        self.navigationController!.navigationBar.barStyle = .black
+        self.navigationController!.navigationBar.isTranslucent = false
+        self.navigationController!.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        self.navigationController!.navigationBar.tintColor = nil
     }
     
     @objc func pushAction() {

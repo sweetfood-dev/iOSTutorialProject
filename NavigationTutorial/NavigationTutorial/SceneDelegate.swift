@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let mainViewController = ViewController()
+        let mainViewController = MainViewController()
         // NavigationController 생성, 초기화로 rootViewController사용
         let navigationController = UINavigationController(rootViewController: mainViewController)
         // window의 rootViewController로 navigationController 설정
