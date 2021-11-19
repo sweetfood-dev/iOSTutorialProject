@@ -18,6 +18,13 @@
 		F93B4D6F2745EDE5009F0A40 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D6E2745EDE5009F0A40 /* ThirdViewController.swift */; };
 		F93B4D7327464067009F0A40 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D7227464067009F0A40 /* MainViewController.swift */; };
 		F93B4D75274646BE009F0A40 /* CustomRightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D74274646BE009F0A40 /* CustomRightViewController.swift */; };
+		F93B4D7A2747667A009F0A40 /* DetailLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D792747667A009F0A40 /* DetailLog.swift */; };
+		F93B4D7C2747714E009F0A40 /* CustomTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D7B2747714E009F0A40 /* CustomTitleViewController.swift */; };
+		F93B4D7E274772AC009F0A40 /* NavigationPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D7D274772AC009F0A40 /* NavigationPromptViewController.swift */; };
+		F93B4D802747779E009F0A40 /* CustomAppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D7F2747779E009F0A40 /* CustomAppearanceViewController.swift */; };
+		F93B4D8227477954009F0A40 /* Cities.json in Resources */ = {isa = PBXBuildFile; fileRef = F93B4D8127477954009F0A40 /* Cities.json */; };
+		F93B4D8427477968009F0A40 /* CitiesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D8327477968009F0A40 /* CitiesDataSource.swift */; };
+		F93B4D862747896E009F0A40 /* CustomBackButtonImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D852747896E009F0A40 /* CustomBackButtonImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +40,13 @@
 		F93B4D6E2745EDE5009F0A40 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		F93B4D7227464067009F0A40 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F93B4D74274646BE009F0A40 /* CustomRightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRightViewController.swift; sourceTree = "<group>"; };
+		F93B4D792747667A009F0A40 /* DetailLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLog.swift; sourceTree = "<group>"; };
+		F93B4D7B2747714E009F0A40 /* CustomTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleViewController.swift; sourceTree = "<group>"; };
+		F93B4D7D274772AC009F0A40 /* NavigationPromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPromptViewController.swift; sourceTree = "<group>"; };
+		F93B4D7F2747779E009F0A40 /* CustomAppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAppearanceViewController.swift; sourceTree = "<group>"; };
+		F93B4D8127477954009F0A40 /* Cities.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Cities.json; sourceTree = "<group>"; };
+		F93B4D8327477968009F0A40 /* CitiesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesDataSource.swift; sourceTree = "<group>"; };
+		F93B4D852747896E009F0A40 /* CustomBackButtonImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButtonImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +87,9 @@
 				F93B4D5C2744D3F5009F0A40 /* Assets.xcassets */,
 				F93B4D5E2744D3F5009F0A40 /* LaunchScreen.storyboard */,
 				F93B4D612744D3F5009F0A40 /* Info.plist */,
+				F93B4D792747667A009F0A40 /* DetailLog.swift */,
+				F93B4D8127477954009F0A40 /* Cities.json */,
+				F93B4D8327477968009F0A40 /* CitiesDataSource.swift */,
 			);
 			path = NavigationTutorial;
 			sourceTree = "<group>";
@@ -93,6 +110,10 @@
 			children = (
 				F93B4D7227464067009F0A40 /* MainViewController.swift */,
 				F93B4D74274646BE009F0A40 /* CustomRightViewController.swift */,
+				F93B4D7B2747714E009F0A40 /* CustomTitleViewController.swift */,
+				F93B4D7D274772AC009F0A40 /* NavigationPromptViewController.swift */,
+				F93B4D7F2747779E009F0A40 /* CustomAppearanceViewController.swift */,
+				F93B4D852747896E009F0A40 /* CustomBackButtonImageViewController.swift */,
 			);
 			path = AppleNavBarTutorial;
 			sourceTree = "<group>";
@@ -162,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F93B4D602744D3F5009F0A40 /* LaunchScreen.storyboard in Resources */,
+				F93B4D8227477954009F0A40 /* Cities.json in Resources */,
 				F93B4D5D2744D3F5009F0A40 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,7 +197,13 @@
 			files = (
 				F93B4D7327464067009F0A40 /* MainViewController.swift in Sources */,
 				F93B4D6B274501D1009F0A40 /* SecondViewController.swift in Sources */,
+				F93B4D862747896E009F0A40 /* CustomBackButtonImageViewController.swift in Sources */,
+				F93B4D7E274772AC009F0A40 /* NavigationPromptViewController.swift in Sources */,
+				F93B4D7C2747714E009F0A40 /* CustomTitleViewController.swift in Sources */,
+				F93B4D7A2747667A009F0A40 /* DetailLog.swift in Sources */,
+				F93B4D802747779E009F0A40 /* CustomAppearanceViewController.swift in Sources */,
 				F93B4D75274646BE009F0A40 /* CustomRightViewController.swift in Sources */,
+				F93B4D8427477968009F0A40 /* CitiesDataSource.swift in Sources */,
 				F93B4D582744D3F3009F0A40 /* ViewController.swift in Sources */,
 				F93B4D542744D3F3009F0A40 /* AppDelegate.swift in Sources */,
 				F93B4D6D2745DE26009F0A40 /* Navigationable.swift in Sources */,

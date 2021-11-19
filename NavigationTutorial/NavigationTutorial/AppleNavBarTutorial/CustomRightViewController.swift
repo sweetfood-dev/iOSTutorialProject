@@ -49,7 +49,10 @@ class CustomRightViewController: UIViewController {
         
         switch type {
         case ButtonType.textButton:
-            let addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(touchAction))
+            let addButton = UIBarButtonItem(title: "Add",
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(touchAction))
             navigationItem.rightBarButtonItem = addButton
         case ButtonType.imageButton:
             let imageButton = UIBarButtonItem(image: UIImage(systemName: "envelope")!,

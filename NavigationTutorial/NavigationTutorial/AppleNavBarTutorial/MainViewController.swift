@@ -26,15 +26,17 @@ class MainViewController: UIViewController {
             case .customRightView:
                 destinationViewController = CustomRightViewController()
             case .customTitleView:
-                print("\(self)")
+                destinationViewController = CustomTitleViewController()
             case .navigationPrompt:
-                print("\(self)")
+                destinationViewController = NavigationPromptViewController()
             case .customAppearance:
-                print("\(self)")
+                destinationViewController = CustomAppearanceViewController()
             case .customBackButtonTitles:
-                print("\(self)")
+                destinationViewController.title = "CustomTitle"
+                destinationViewController.navigationItem.backButtonTitle = "main"
+                destinationViewController.view.backgroundColor = .systemBackground
             case .customBackButtonImage:
-                print("\(self)")
+                destinationViewController = CustomBackButtonImageViewController()                
             case .largeTitle:
                 print("\(self)")
             case .navigationBarAppearance:
@@ -118,6 +120,7 @@ extension MainViewController {
             self?.navigationController?.navigationBar.isTranslucent = true
             self?.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
             self?.navigationController?.navigationBar.tintColor = nil
+            DetailLog.Log("barStyle: .default")
         })
         
         alertController.addAction(UIAlertAction(title: blackOpaqueTitle,
@@ -125,6 +128,7 @@ extension MainViewController {
             self?.navigationController?.navigationBar.barStyle = .black
             self?.navigationController?.navigationBar.isTranslucent = false
             self?.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+            DetailLog.Log("barStyle: .black")
         })
         
         present(alertController, animated: true, completion: nil)
@@ -137,8 +141,14 @@ extension MainViewController: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
-        let destinationViewController = ViewControllerType.init(rawValue: row)!.presentViewController()
-        navigationController?.pushViewController(destinationViewController, animated: true)
+        let viewControllerType = ViewControllerType.init(rawValue: row)!
+        switch viewControllerType {
+        case .customAppearance, .customBackButtonImage:
+            let destinationNavigationController = UINavigationController(rootViewController: viewControllerType.presentViewController())
+            present(destinationNavigationController, animated: true, completion: nil)
+        default:
+            navigationController?.pushViewController(viewControllerType.presentViewController(), animated: true)
+        }
     }
     
 }
