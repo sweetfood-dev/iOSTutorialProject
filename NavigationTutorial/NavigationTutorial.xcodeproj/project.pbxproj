@@ -25,6 +25,9 @@
 		F93B4D8227477954009F0A40 /* Cities.json in Resources */ = {isa = PBXBuildFile; fileRef = F93B4D8127477954009F0A40 /* Cities.json */; };
 		F93B4D8427477968009F0A40 /* CitiesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D8327477968009F0A40 /* CitiesDataSource.swift */; };
 		F93B4D862747896E009F0A40 /* CustomBackButtonImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93B4D852747896E009F0A40 /* CustomBackButtonImageViewController.swift */; };
+		F944AFC5274B563E00E0C8BA /* LarGeTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F944AFC4274B563E00E0C8BA /* LarGeTitleViewController.swift */; };
+		F9B9A013274B639E000452F6 /* NavigationAppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B9A012274B639E000452F6 /* NavigationAppearanceViewController.swift */; };
+		F9B9A015274B6677000452F6 /* BarButtonMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B9A014274B6677000452F6 /* BarButtonMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,9 @@
 		F93B4D8127477954009F0A40 /* Cities.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Cities.json; sourceTree = "<group>"; };
 		F93B4D8327477968009F0A40 /* CitiesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesDataSource.swift; sourceTree = "<group>"; };
 		F93B4D852747896E009F0A40 /* CustomBackButtonImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButtonImageViewController.swift; sourceTree = "<group>"; };
+		F944AFC4274B563E00E0C8BA /* LarGeTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LarGeTitleViewController.swift; sourceTree = "<group>"; };
+		F9B9A012274B639E000452F6 /* NavigationAppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAppearanceViewController.swift; sourceTree = "<group>"; };
+		F9B9A014274B6677000452F6 /* BarButtonMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,9 @@
 				F93B4D7D274772AC009F0A40 /* NavigationPromptViewController.swift */,
 				F93B4D7F2747779E009F0A40 /* CustomAppearanceViewController.swift */,
 				F93B4D852747896E009F0A40 /* CustomBackButtonImageViewController.swift */,
+				F944AFC4274B563E00E0C8BA /* LarGeTitleViewController.swift */,
+				F9B9A012274B639E000452F6 /* NavigationAppearanceViewController.swift */,
+				F9B9A014274B6677000452F6 /* BarButtonMenuViewController.swift */,
 			);
 			path = AppleNavBarTutorial;
 			sourceTree = "<group>";
@@ -197,11 +206,14 @@
 			files = (
 				F93B4D7327464067009F0A40 /* MainViewController.swift in Sources */,
 				F93B4D6B274501D1009F0A40 /* SecondViewController.swift in Sources */,
+				F9B9A013274B639E000452F6 /* NavigationAppearanceViewController.swift in Sources */,
 				F93B4D862747896E009F0A40 /* CustomBackButtonImageViewController.swift in Sources */,
 				F93B4D7E274772AC009F0A40 /* NavigationPromptViewController.swift in Sources */,
+				F944AFC5274B563E00E0C8BA /* LarGeTitleViewController.swift in Sources */,
 				F93B4D7C2747714E009F0A40 /* CustomTitleViewController.swift in Sources */,
 				F93B4D7A2747667A009F0A40 /* DetailLog.swift in Sources */,
 				F93B4D802747779E009F0A40 /* CustomAppearanceViewController.swift in Sources */,
+				F9B9A015274B6677000452F6 /* BarButtonMenuViewController.swift in Sources */,
 				F93B4D75274646BE009F0A40 /* CustomRightViewController.swift in Sources */,
 				F93B4D8427477968009F0A40 /* CitiesDataSource.swift in Sources */,
 				F93B4D582744D3F3009F0A40 /* ViewController.swift in Sources */,

@@ -38,11 +38,11 @@ class MainViewController: UIViewController {
             case .customBackButtonImage:
                 destinationViewController = CustomBackButtonImageViewController()                
             case .largeTitle:
-                print("\(self)")
+                destinationViewController = LarGeTitleViewController()
             case .navigationBarAppearance:
-                print("\(self)")
+                destinationViewController = NavigationAppearanceViewController()
             case .barButtonItemWithMenu:
-                print("\(self)")
+                destinationViewController = BarButtonMenuViewController()
             }
             
             return destinationViewController
@@ -143,7 +143,7 @@ extension MainViewController: UITableViewDelegate {
         let row = indexPath.row
         let viewControllerType = ViewControllerType.init(rawValue: row)!
         switch viewControllerType {
-        case .customAppearance, .customBackButtonImage:
+        case .customAppearance, .customBackButtonImage, .largeTitle:
             let destinationNavigationController = UINavigationController(rootViewController: viewControllerType.presentViewController())
             present(destinationNavigationController, animated: true, completion: nil)
         default:
