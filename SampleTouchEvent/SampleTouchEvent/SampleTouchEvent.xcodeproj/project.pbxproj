@@ -1,0 +1,496 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F929FB3B277C45D7006CB84A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929FB3A277C45D7006CB84A /* AppDelegate.swift */; };
+		F929FB3D277C45D7006CB84A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929FB3C277C45D7006CB84A /* SceneDelegate.swift */; };
+		F929FB3F277C45D7006CB84A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929FB3E277C45D7006CB84A /* ViewController.swift */; };
+		F929FB42277C45D7006CB84A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F929FB40277C45D7006CB84A /* Main.storyboard */; };
+		F929FB44277C45D8006CB84A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F929FB43277C45D8006CB84A /* Assets.xcassets */; };
+		F929FB47277C45D8006CB84A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F929FB45277C45D8006CB84A /* LaunchScreen.storyboard */; };
+		F929FB50277C45F7006CB84A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F929FB4F277C45F7006CB84A /* SnapKit */; };
+		F929FB53277C461A006CB84A /* TouchHandlingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F929FB52277C461A006CB84A /* TouchHandlingView.swift */; };
+		F937500727953F400074BCA0 /* CheckmarkGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F937500627953F400074BCA0 /* CheckmarkGestureRecognizer.swift */; };
+		F937500927968C4C0074BCA0 /* TouchCaptureGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F937500827968C4C0074BCA0 /* TouchCaptureGesture.swift */; };
+		F937500C2797E8010074BCA0 /* MyTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F937500B2797E8010074BCA0 /* MyTapGestureRecognizer.swift */; };
+		F937500E27993EC80074BCA0 /* PangestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F937500D27993EC80074BCA0 /* PangestureView.swift */; };
+		F9375011279E971D0074BCA0 /* GestureListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9375010279E971D0074BCA0 /* GestureListController.swift */; };
+		F9375014279E976B0074BCA0 /* GestureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9375013279E976B0074BCA0 /* GestureModel.swift */; };
+		F9375016279E9BC40074BCA0 /* SwipeGestureRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9375015279E9BC40074BCA0 /* SwipeGestureRecognizerView.swift */; };
+		F9375018279F6ED30074BCA0 /* EdgePanGestureRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9375017279F6ED30074BCA0 /* EdgePanGestureRecognizerView.swift */; };
+		F937501A279FC0410074BCA0 /* LongGestureRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9375019279FC0410074BCA0 /* LongGestureRecognizerView.swift */; };
+		F937501C279FD7530074BCA0 /* RotationRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F937501B279FD7530074BCA0 /* RotationRecognizerView.swift */; };
+		F937501E279FE4710074BCA0 /* PinchRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F937501D279FE4710074BCA0 /* PinchRecognizerView.swift */; };
+		F9C3B9F527897950005C7186 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3B9F427897950005C7186 /* EventType.swift */; };
+		F9C3B9F727897A0A005C7186 /* TapGestureRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3B9F627897A0A005C7186 /* TapGestureRecognizerView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F929FB37277C45D7006CB84A /* SampleTouchEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleTouchEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F929FB3A277C45D7006CB84A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F929FB3C277C45D7006CB84A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F929FB3E277C45D7006CB84A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F929FB41277C45D7006CB84A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F929FB43277C45D8006CB84A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F929FB46277C45D8006CB84A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F929FB48277C45D8006CB84A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F929FB52277C461A006CB84A /* TouchHandlingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchHandlingView.swift; sourceTree = "<group>"; };
+		F937500627953F400074BCA0 /* CheckmarkGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkGestureRecognizer.swift; sourceTree = "<group>"; };
+		F937500827968C4C0074BCA0 /* TouchCaptureGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchCaptureGesture.swift; sourceTree = "<group>"; };
+		F937500B2797E8010074BCA0 /* MyTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTapGestureRecognizer.swift; sourceTree = "<group>"; };
+		F937500D27993EC80074BCA0 /* PangestureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PangestureView.swift; sourceTree = "<group>"; };
+		F9375010279E971D0074BCA0 /* GestureListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListController.swift; sourceTree = "<group>"; };
+		F9375013279E976B0074BCA0 /* GestureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureModel.swift; sourceTree = "<group>"; };
+		F9375015279E9BC40074BCA0 /* SwipeGestureRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGestureRecognizerView.swift; sourceTree = "<group>"; };
+		F9375017279F6ED30074BCA0 /* EdgePanGestureRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgePanGestureRecognizerView.swift; sourceTree = "<group>"; };
+		F9375019279FC0410074BCA0 /* LongGestureRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongGestureRecognizerView.swift; sourceTree = "<group>"; };
+		F937501B279FD7530074BCA0 /* RotationRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationRecognizerView.swift; sourceTree = "<group>"; };
+		F937501D279FE4710074BCA0 /* PinchRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchRecognizerView.swift; sourceTree = "<group>"; };
+		F9C3B9F427897950005C7186 /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
+		F9C3B9F627897A0A005C7186 /* TapGestureRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGestureRecognizerView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F929FB34277C45D7006CB84A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F929FB50277C45F7006CB84A /* SnapKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F929FB2E277C45D7006CB84A = {
+			isa = PBXGroup;
+			children = (
+				F929FB39277C45D7006CB84A /* SampleTouchEvent */,
+				F929FB38277C45D7006CB84A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F929FB38277C45D7006CB84A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F929FB37277C45D7006CB84A /* SampleTouchEvent.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F929FB39277C45D7006CB84A /* SampleTouchEvent */ = {
+			isa = PBXGroup;
+			children = (
+				F9375012279E975C0074BCA0 /* DataModel */,
+				F937500F279E96FC0074BCA0 /* ViewControllers */,
+				F937500A2797E7E60074BCA0 /* Gesture */,
+				F937500527953F1F0074BCA0 /* CustomGesture */,
+				F9C3B9F32789793F005C7186 /* Protocols */,
+				F929FB51277C4604006CB84A /* Views */,
+				F929FB3A277C45D7006CB84A /* AppDelegate.swift */,
+				F929FB3C277C45D7006CB84A /* SceneDelegate.swift */,
+				F929FB40277C45D7006CB84A /* Main.storyboard */,
+				F929FB43277C45D8006CB84A /* Assets.xcassets */,
+				F929FB45277C45D8006CB84A /* LaunchScreen.storyboard */,
+				F929FB48277C45D8006CB84A /* Info.plist */,
+			);
+			path = SampleTouchEvent;
+			sourceTree = "<group>";
+		};
+		F929FB51277C4604006CB84A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F929FB52277C461A006CB84A /* TouchHandlingView.swift */,
+				F9C3B9F627897A0A005C7186 /* TapGestureRecognizerView.swift */,
+				F937500D27993EC80074BCA0 /* PangestureView.swift */,
+				F9375015279E9BC40074BCA0 /* SwipeGestureRecognizerView.swift */,
+				F9375017279F6ED30074BCA0 /* EdgePanGestureRecognizerView.swift */,
+				F9375019279FC0410074BCA0 /* LongGestureRecognizerView.swift */,
+				F937501B279FD7530074BCA0 /* RotationRecognizerView.swift */,
+				F937501D279FE4710074BCA0 /* PinchRecognizerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F937500527953F1F0074BCA0 /* CustomGesture */ = {
+			isa = PBXGroup;
+			children = (
+				F937500627953F400074BCA0 /* CheckmarkGestureRecognizer.swift */,
+				F937500827968C4C0074BCA0 /* TouchCaptureGesture.swift */,
+			);
+			path = CustomGesture;
+			sourceTree = "<group>";
+		};
+		F937500A2797E7E60074BCA0 /* Gesture */ = {
+			isa = PBXGroup;
+			children = (
+				F937500B2797E8010074BCA0 /* MyTapGestureRecognizer.swift */,
+			);
+			path = Gesture;
+			sourceTree = "<group>";
+		};
+		F937500F279E96FC0074BCA0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F929FB3E277C45D7006CB84A /* ViewController.swift */,
+				F9375010279E971D0074BCA0 /* GestureListController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F9375012279E975C0074BCA0 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				F9375013279E976B0074BCA0 /* GestureModel.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		F9C3B9F32789793F005C7186 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F9C3B9F427897950005C7186 /* EventType.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F929FB36277C45D7006CB84A /* SampleTouchEvent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F929FB4B277C45D8006CB84A /* Build configuration list for PBXNativeTarget "SampleTouchEvent" */;
+			buildPhases = (
+				F929FB33277C45D7006CB84A /* Sources */,
+				F929FB34277C45D7006CB84A /* Frameworks */,
+				F929FB35277C45D7006CB84A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SampleTouchEvent;
+			packageProductDependencies = (
+				F929FB4F277C45F7006CB84A /* SnapKit */,
+			);
+			productName = SampleTouchEvent;
+			productReference = F929FB37277C45D7006CB84A /* SampleTouchEvent.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F929FB2F277C45D7006CB84A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					F929FB36277C45D7006CB84A = {
+						CreatedOnToolsVersion = 13.0;
+					};
+				};
+			};
+			buildConfigurationList = F929FB32277C45D7006CB84A /* Build configuration list for PBXProject "SampleTouchEvent" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F929FB2E277C45D7006CB84A;
+			packageReferences = (
+				F929FB4E277C45F7006CB84A /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
+			productRefGroup = F929FB38277C45D7006CB84A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F929FB36277C45D7006CB84A /* SampleTouchEvent */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F929FB35277C45D7006CB84A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F929FB47277C45D8006CB84A /* LaunchScreen.storyboard in Resources */,
+				F929FB44277C45D8006CB84A /* Assets.xcassets in Resources */,
+				F929FB42277C45D7006CB84A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F929FB33277C45D7006CB84A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F937501E279FE4710074BCA0 /* PinchRecognizerView.swift in Sources */,
+				F9375011279E971D0074BCA0 /* GestureListController.swift in Sources */,
+				F9375014279E976B0074BCA0 /* GestureModel.swift in Sources */,
+				F929FB3F277C45D7006CB84A /* ViewController.swift in Sources */,
+				F9C3B9F527897950005C7186 /* EventType.swift in Sources */,
+				F937500927968C4C0074BCA0 /* TouchCaptureGesture.swift in Sources */,
+				F929FB53277C461A006CB84A /* TouchHandlingView.swift in Sources */,
+				F937501A279FC0410074BCA0 /* LongGestureRecognizerView.swift in Sources */,
+				F937500E27993EC80074BCA0 /* PangestureView.swift in Sources */,
+				F9C3B9F727897A0A005C7186 /* TapGestureRecognizerView.swift in Sources */,
+				F9375016279E9BC40074BCA0 /* SwipeGestureRecognizerView.swift in Sources */,
+				F937501C279FD7530074BCA0 /* RotationRecognizerView.swift in Sources */,
+				F9375018279F6ED30074BCA0 /* EdgePanGestureRecognizerView.swift in Sources */,
+				F937500727953F400074BCA0 /* CheckmarkGestureRecognizer.swift in Sources */,
+				F937500C2797E8010074BCA0 /* MyTapGestureRecognizer.swift in Sources */,
+				F929FB3B277C45D7006CB84A /* AppDelegate.swift in Sources */,
+				F929FB3D277C45D7006CB84A /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F929FB40277C45D7006CB84A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F929FB41277C45D7006CB84A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F929FB45277C45D8006CB84A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F929FB46277C45D8006CB84A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F929FB49277C45D8006CB84A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F929FB4A277C45D8006CB84A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F929FB4C277C45D8006CB84A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4MAHD36JB8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SampleTouchEvent/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sweetfood.SampleTouchEvent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F929FB4D277C45D8006CB84A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4MAHD36JB8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SampleTouchEvent/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sweetfood.SampleTouchEvent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F929FB32277C45D7006CB84A /* Build configuration list for PBXProject "SampleTouchEvent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F929FB49277C45D8006CB84A /* Debug */,
+				F929FB4A277C45D8006CB84A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F929FB4B277C45D8006CB84A /* Build configuration list for PBXNativeTarget "SampleTouchEvent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F929FB4C277C45D8006CB84A /* Debug */,
+				F929FB4D277C45D8006CB84A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F929FB4E277C45F7006CB84A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F929FB4F277C45F7006CB84A /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F929FB4E277C45F7006CB84A /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F929FB2F277C45D7006CB84A /* Project object */;
+}
