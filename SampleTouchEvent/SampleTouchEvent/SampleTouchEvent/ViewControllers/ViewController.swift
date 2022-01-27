@@ -63,6 +63,6 @@ class ViewController: UIViewController {
         self.view = gestureContentView
     }
     
-    private func configuration() {
+    private func configuration() {        
     }
 }
