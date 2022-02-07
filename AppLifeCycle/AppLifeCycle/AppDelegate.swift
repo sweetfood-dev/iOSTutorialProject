@@ -48,7 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             _ = $0.application?(application,
                                 didFinishLaunchingWithOptions: launchOptions)
         }
-        
         window = UIWindow()
         window?.rootViewController = startScreen
         window?.makeKeyAndVisible()
@@ -75,11 +74,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // background로 진입하였을 때 호출
     func applicationDidEnterBackground(_ application: UIApplication) {
         print("🔵 AppDelegate \(#function) State: \(UIApplication.shared.applicationState.toString())")
-        
-        application.beginBackgroundTask {
-            print("Background time remaning: \(application.backgroundTimeRemaining)")
-            application.endBackgroundTask(UIBackgroundTaskIdentifier.invalid)
-        }
+//        application.beginBackgroundTask {
+//            print("Background time remaning: \(application.backgroundTimeRemaining)")
+//            application.endBackgroundTask(UIBackgroundTaskIdentifier.invalid)
+//        }
     }
     
     // Deprecated

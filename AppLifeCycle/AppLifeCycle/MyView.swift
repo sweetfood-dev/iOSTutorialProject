@@ -14,19 +14,36 @@ class MyView: UIView {
     lazy var mySubView: UIView = {
         let view = UIView()
         view.backgroundColor = .yellow
-        view.translatesAutoresizingMaskIntoConstraints = false // Turn off autolayout
+        view.translatesAutoresizingMaskIntoConstraints = false // Turn off autolayou
         return view
-    }()    
+    }()
     
-    
+    lazy var moveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("moveUp", for: .normal)
+        button.addTarget(self,
+                         action: #selector(moveUp(_:)),
+                         for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false // Turn off autolayou
+        return button
+    }()
+    @objc func moveUp(_ sender: UIButton) {
+//        updateConstraintsIfNeeded()
+//        setNeedsUpdateConstraints()
+        
+//        layoutIfNeeded()
+//        setNeedsLayout()
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         print("🟤 \(#function) State: \(UIApplication.shared.applicationState.toString())")
-        
         setupUI()
         styleView()
     }
-    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        print("🟤 \(#function) State: \(UIApplication.shared.applicationState.toString())")
+    }
     required init?(coder: NSCoder) {
         print("🟤 \(#function) State: \(UIApplication.shared.applicationState.toString())")
         fatalError("init(coder:) has not been implemented")
@@ -68,6 +85,10 @@ extension MyView {
         mySubView.widthAnchor.constraint(equalToConstant: 200).isActive = true
         mySubView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         mySubView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        addSubview(moveButton)
+        moveButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100).isActive = true
+        moveButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
     private func styleView() {
